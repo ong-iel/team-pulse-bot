@@ -30,8 +30,7 @@ def post_monday_prompt():
     if channel_id:
         result = app.client.chat_postMessage(
             channel=channel_id,
-            text="🧭 *Monday Compass Check* — Copy paste your focus for this week in this thread 👇"
-        )
+            text="🧭 Good morning, team! *Monday Compass Check* — Please copy paste your focus for this week from our meeting agenda directly into this thread. ⚠️ *Please reply IN the thread below*, not in the channel. Have a fruitful and intentional week ahead! 🌱"        )
         monday_thread_ts = result["ts"]
         logging.info(f"Monday prompt posted, ts: {monday_thread_ts}")
 
@@ -40,7 +39,7 @@ def post_daily_standup():
     if channel_id:
         app.client.chat_postMessage(
             channel=channel_id,
-            text="☀️ *Daily Standup* — Write your focus for today in this thread 👇"
+            text="☀️ Good morning! *Daily Standup* — Please write here the things you are focusing on today. We wear many hats, so share as much as reflects your day. ⚠️ *Reminder: reply in thread*, not in the main channel. Have a great day! 💪"
         )
 
 def post_friday_reflection():
@@ -69,6 +68,9 @@ def post_friday_reflection():
                 f"✅ What did you accomplish?\n"
                 f"🔄 What's still open?\n"
                 f"❌ What blocked you — and what's the solution?"
+                f"⚠️ *Please reply in thread* to this message.\n\n"
+                f"📋 *Reminder:* Take a moment to fill in the meeting agenda with your areas of focus for next week before Monday! 🗓️ https://app.clickup.com/24481048/v/dc/qb38r-2384/qb38r-8184"
+)
             )
         )
 
