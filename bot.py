@@ -75,13 +75,13 @@ def post_friday_reflection():
 scheduler = BackgroundScheduler()
 
 # Monday 9am
-scheduler.add_job(post_monday_prompt, 'cron', day_of_week='fri', hour=12, minute=44)
+scheduler.add_job(post_monday_prompt, 'cron', day_of_week='fri', hour=12, minute=50)
 
 # Tuesday to Friday 9am
-scheduler.add_job(post_daily_standup, 'cron', day_of_week='fri', hour=12, minute=46)
+scheduler.add_job(post_daily_standup, 'cron', day_of_week='fri', hour=12, minute=52)
 
 # Friday 3pm
-scheduler.add_job(post_friday_reflection, 'cron', day_of_week='fri', hour=12, minute=48)
+scheduler.add_job(post_friday_reflection, 'cron', day_of_week='fri', hour=12, minute=54)
 
 scheduler.start()
 
