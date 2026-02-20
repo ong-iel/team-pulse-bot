@@ -72,7 +72,7 @@ def post_friday_reflection():
                 f"📋 *Reminder:* Take a moment to fill in the meeting agenda with your areas of focus for next week before Monday! 🗓️ https://app.clickup.com/24481048/v/dc/qb38r-2384/qb38r-8184"
 )
             )
-        )
+        
 
 scheduler = BackgroundScheduler()
 
