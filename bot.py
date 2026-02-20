@@ -30,7 +30,7 @@ def post_monday_prompt():
     if channel_id:
         result = app.client.chat_postMessage(
             channel=channel_id,
-            text="🧭 Good morning, team! *Monday Compass Check* — Please copy paste your focus for this week from our meeting agenda directly into this thread. ⚠️ *Please reply IN the thread below*, not in the channel. Have a fruitful and intentional week ahead! 🌱"        )
+            text="🧭 Good morning, team! Time for your *Monday Compass Check*.\n\nPlease copy paste your focus for this week directly from our meeting agenda into this thread. This is your moment to land in the work week — take a breath and be intentional about where you're putting your energy.\n\nWhen sharing your tasks, please use this format:\n*[Project / Milestone] — Task*\n\n⚠️ *Please reply in thread* — click 'Reply in thread' below, not in the main channel.\n\nHave a fruitful week! 🌱".  )
         monday_thread_ts = result["ts"]
         logging.info(f"Monday prompt posted, ts: {monday_thread_ts}")
 
@@ -39,7 +39,7 @@ def post_daily_standup():
     if channel_id:
         app.client.chat_postMessage(
             channel=channel_id,
-            text="☀️ Good morning! *Daily Standup* — Please write here the things you are focusing on today. We wear many hats, so share as much as reflects your day. ⚠️ *Reminder: reply in thread*, not in the main channel. Have a great day! 💪"
+            text="☀️ Good morning! Time for your *Daily Standup*.\n\nPlease write the things you are focusing on today, using this format:\n*[Project / Milestone] — I am doing [task] so that [outcome]*\n\nWe wear many hats, so share as much as reflects your day.\n\n⚠️ *Please reply in thread* — not in the main channel.\n\nHave a great day! 💪"
         )
 
 def post_friday_reflection():
@@ -62,14 +62,15 @@ def post_friday_reflection():
         app.client.chat_postMessage(
             channel=channel_id,
             text=(
-                f"👋 <@{user_id}> — here's what you set out to do this week:\n\n"
-                f"_{user_text}_\n\n"
-                f"How did it go? Please share:\n"
-                f"✅ What did you accomplish?\n"
-                f"🔄 What's still open?\n"
-                f"❌ What blocked you — and what's the solution?"
-                f"⚠️ *Please reply in thread* to this message.\n\n"
-                f"📋 *Reminder:* Take a moment to fill in the meeting agenda with your areas of focus for next week before Monday! 🗓️ https://app.clickup.com/24481048/v/dc/qb38r-2384/qb38r-8184"
+    f"👋 Hey <@{user_id}> — here's what you set out to do this week:\n\n"
+    f"_{user_text}_\n\n"
+    f"How did it go? Please share:\n"
+    f"✅ What did you accomplish?\n"
+    f"🔄 What's still open?\n"
+    f"❌ What blocked you — and what's the solution?\n\n"
+    f"💬 Did anything significant come up this week that wasn't in your Monday plan? Share it here too.\n\n"
+    f"⚠️ *Please reply in thread* to this message.\n\n"
+    f"📋 *Reminder:* don't forget to fill in the meeting agenda with your areas of focus for next week before Monday! 🗓️"
 )
             )
         
