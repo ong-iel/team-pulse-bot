@@ -30,7 +30,8 @@ def post_monday_prompt():
     if channel_id:
         result = app.client.chat_postMessage(
             channel=channel_id,
-            text="🧭 Good morning, team! Time for your *Monday Compass Check*.\n\nPlease copy paste your focus for this week directly from our meeting agenda into this thread. This is your moment to land in the work week — take a breath and be intentional about where you're putting your energy.\n\nWhen sharing your tasks, please use this format:\n*[Project / Milestone] — Task*\n\n⚠️ *Please reply in thread* — click 'Reply in thread' below, not in the main channel.\n\nHave a fruitful week! 🌱".  )
+            text="🧭 Good morning, team! Time for your *Monday Compass Check*.\n\nPlease copy paste your focus for this week directly from our meeting agenda into this thread. This is your moment to land in the work week — take a breath and be intentional about where you're putting your energy.\n\nWhen sharing your tasks, please use this format:\n*[Project / Milestone] — Task*\n\n⚠️ *Please reply in thread* — click 'Reply in thread' below, not in the main channel.\n\nHave a fruitful week! 🌱"
+            )
         monday_thread_ts = result["ts"]
         logging.info(f"Monday prompt posted, ts: {monday_thread_ts}")
 
