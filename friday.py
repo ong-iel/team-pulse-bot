@@ -1,7 +1,6 @@
 import os
 from slack_sdk import WebClient
 from dotenv import load_dotenv
-from datetime import datetime, timedelta
 
 load_dotenv()
 
@@ -15,7 +14,6 @@ def get_channel_id():
     return None
 
 def get_monday_thread_ts(channel_id):
-    # Look back 7 days to find Monday's prompt
     result = client.conversations_history(
         channel=channel_id,
         limit=200
@@ -34,7 +32,7 @@ if channel_id:
             ts=monday_ts
         )
         messages = replies["messages"][1:]
-    for msg in messages:
+        for msg in messages:
             user_id = msg["user"]
             user_text = msg["text"]
             client.chat_postMessage(
