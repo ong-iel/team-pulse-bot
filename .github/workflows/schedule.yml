@@ -1,0 +1,48 @@
+name: Team Pulse Bot
+
+on:
+  schedule:
+    - cron: '55 7 * * 1'  # Monday 9:55 Brasov (winter)
+    - cron: '55 7 * * 2-5'  # Tue-Fri 9:55 Brasov (winter)
+    - cron: '0 13 * * 5'  # Friday 15:00 Brasov (winter)
+  workflow_dispatch:  # allows manual trigger
+
+jobs:
+  monday:
+    if: github.event.schedule == '55 7 * * 1'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: pip install slack-sdk python-dotenv
+      - run: python monday.py
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+  standup:
+    if: github.event.schedule == '55 7 * * 2-5'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: pip install slack-sdk python-dotenv
+      - run: python standup.py
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+  friday:
+    if: github.event.schedule == '0 13 * * 5'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: pip install slack-sdk python-dotenv
+      - run: python friday.py
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
