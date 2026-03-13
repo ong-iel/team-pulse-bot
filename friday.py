@@ -19,7 +19,7 @@ def get_monday_thread_ts(channel_id):
         limit=200
     )
     for msg in result["messages"]:
-        if "Monday Compass Check" in msg.get("text", "") and msg.get("user") is None:
+        if "Monday Compass Check" in msg.get("text", ""):
             return msg["ts"]
     return None
 
@@ -33,6 +33,8 @@ if channel_id:
         )
         messages = replies["messages"][1:]
         for msg in messages:
+            if "user" not in msg:
+                continue
             user_id = msg["user"]
             user_text = msg["text"]
             client.chat_postMessage(
