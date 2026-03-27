@@ -2,9 +2,9 @@ name: Team Pulse Bot
 
 on:
   schedule:
-    - cron: '55 7 * * 2-5'
+    - cron: '55 6 * * 2-5'
     - cron: '55 6 * * 1'
-    - cron: '0 12 * * 5"
+    - cron: '0 12 * * 5'
   workflow_dispatch:
     inputs:
       job:
