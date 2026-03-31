@@ -1,0 +1,17 @@
+name: Monday Prompt
+on:
+  schedule:
+    - cron: '55 6 * * 1'
+  workflow_dispatch:
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: pip install slack-sdk python-dotenv
+      - run: python monday.py
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
